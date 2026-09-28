@@ -44,16 +44,28 @@
                 <div class="pub-tabs-wrapper">
                     <ul class="nav nav-tabs pub-nav-tabs" id="pubTabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="all-pubs-tab" data-toggle="tab" href="#all-pubs" role="tab" aria-controls="all-pubs" aria-selected="true">All (23)</a>
+                            <a class="nav-link active" id="all-pubs-tab" data-toggle="tab" href="#all-pubs" role="tab" aria-controls="all-pubs" aria-selected="true">
+                                <i data-feather="grid"></i>
+                                <span>All (23)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="journal-pubs-tab" data-toggle="tab" href="#journal-pubs" role="tab" aria-controls="journal-pubs" aria-selected="false">Journals (4)</a>
+                            <a class="nav-link" id="journal-pubs-tab" data-toggle="tab" href="#journal-pubs" role="tab" aria-controls="journal-pubs" aria-selected="false">
+                                <i data-feather="book-open"></i>
+                                <span>Journals (4)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="conf-pubs-tab" data-toggle="tab" href="#conf-pubs" role="tab" aria-controls="conf-pubs" aria-selected="false">Conferences (15)</a>
+                            <a class="nav-link" id="conf-pubs-tab" data-toggle="tab" href="#conf-pubs" role="tab" aria-controls="conf-pubs" aria-selected="false">
+                                <i data-feather="award"></i>
+                                <span>Conferences (15)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="preprint-pubs-tab" data-toggle="tab" href="#preprint-pubs" role="tab" aria-controls="preprint-pubs" aria-selected="false">Preprints (4)</a>
+                            <a class="nav-link" id="preprint-pubs-tab" data-toggle="tab" href="#preprint-pubs" role="tab" aria-controls="preprint-pubs" aria-selected="false">
+                                <i data-feather="file-text"></i>
+                                <span>Preprints (4)</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -1252,3 +1264,121 @@
     </div>
 </div>
 <!-- End Publications Area -->
+
+<style>
+/* Sleek Compact Publications Navigation Tabs */
+.pub-tabs-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-bottom: 25px !important;
+}
+
+.pub-nav-tabs {
+    max-width: 680px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: #181b20 !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    padding: 6px !important;
+    gap: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+    overflow: visible !important;
+}
+
+.pub-nav-tabs .nav-item {
+    flex: 1 1 0 !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+.pub-nav-tabs .nav-item .nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    color: #94a3b8 !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    gap: 7px !important;
+    white-space: nowrap !important;
+    text-transform: capitalize !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.pub-nav-tabs .nav-item .nav-link:hover {
+    color: #f1f5f9 !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+}
+
+.pub-nav-tabs .nav-item .nav-link.active {
+    background: #222631 !important;
+    color: #f43f5e !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(244, 63, 94, 0.35) !important;
+    box-shadow: 0 4px 14px rgba(244, 63, 94, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.pub-nav-tabs .nav-link svg,
+.pub-nav-tabs .nav-link i {
+    width: 15px !important;
+    height: 15px !important;
+    stroke-width: 2 !important;
+    color: inherit !important;
+    stroke: currentColor !important;
+    pointer-events: none !important;
+    transition: transform 0.25s ease !important;
+}
+
+.pub-nav-tabs .nav-item .nav-link:hover svg,
+.pub-nav-tabs .nav-item .nav-link:hover i {
+    transform: scale(1.1);
+}
+
+.pub-nav-tabs .nav-link span {
+    pointer-events: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .pub-nav-tabs {
+        max-width: 100% !important;
+        padding: 5px !important;
+        gap: 4px !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+    }
+    .pub-nav-tabs .nav-item {
+        flex: 1 0 auto !important;
+    }
+    .pub-nav-tabs .nav-item .nav-link {
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+        gap: 5px !important;
+    }
+    .pub-nav-tabs .nav-link svg,
+    .pub-nav-tabs .nav-link i {
+        width: 13px !important;
+        height: 13px !important;
+    }
+}
+</style>
+<script>
+    if (window.feather) {
+        feather.replace();
+    }
+</script>

@@ -45,8 +45,8 @@
                 </div>
             </div>
 
-            <!-- Col 2: Quick Links (2-Column Grid) -->
-            <div class="col-lg-3 col-md-6 col-12 mt_sm--20">
+            <!-- Col 2: Quick Links (Single Column Vertical List) -->
+            <div class="col-lg-2 col-md-6 col-12 mt_sm--20">
                 <div class="footer-widget">
                     <h4 class="widget-title">Quick Links</h4>
                     <ul class="footer-links">
@@ -60,21 +60,21 @@
                 </div>
             </div>
 
-            <!-- Col 3: Contact Info -->
-            <div class="col-lg-2 col-md-6 col-12 mt_md--30 mt_sm--20">
+            <!-- Col 3: Contact Info (Direct Email & Phone Display) -->
+            <div class="col-lg-3 col-md-6 col-12 mt_md--30 mt_sm--20">
                 <div class="footer-widget">
                     <h4 class="widget-title">Get In Touch</h4>
                     <div class="contact-item">
                         <i data-feather="map-pin"></i>
-                        <span>Dhaka, BD</span>
+                        <span>Dhaka, Bangladesh</span>
                     </div>
                     <div class="contact-item">
                         <i data-feather="mail"></i>
-                        <a href="mailto:contactshahria@gmail.com">Email Me</a>
+                        <a href="mailto:contactshahria@gmail.com">contactshahria@gmail.com</a>
                     </div>
                     <div class="contact-item">
                         <i data-feather="phone"></i>
-                        <a href="tel:+8801601000829">Call Me</a>
+                        <a href="tel:+8801601000829">+880 1601 000829</a>
                     </div>
                 </div>
             </div>
@@ -108,3 +108,119 @@
     </div>
 </div>
 <!-- End Footer Area -->
+
+<style>
+/* Compressed Sleek Footer Styling */
+.pro-footer {
+    padding-top: 24px !important;
+    padding-bottom: 16px !important;
+}
+
+.pro-footer .footer-widget .widget-title {
+    margin-bottom: 10px !important;
+    font-size: 14.5px !important;
+}
+
+.pro-footer .footer-widget p.footer-bio {
+    font-size: 13px !important;
+    line-height: 19px !important;
+    margin-bottom: 8px !important;
+}
+
+.pro-footer .footer-widget .footer-status {
+    margin-bottom: 6px !important;
+}
+
+.pro-footer .footer-social-wrapper {
+    margin-top: 6px !important;
+}
+
+/* Footer Quick Links: Compact Vertical Alignment */
+.pro-footer .footer-widget .footer-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+}
+
+.pro-footer .footer-widget .footer-links li {
+    margin-bottom: 0 !important;
+    line-height: 1.35 !important;
+}
+
+.pro-footer .footer-widget .footer-links li a {
+    color: #94a3b8 !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    padding: 2px 0 !important;
+    transition: var(--transition) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+.pro-footer .footer-widget .footer-links li a:hover {
+    color: #f43f5e !important;
+    transform: translateX(3px) !important;
+}
+
+/* Footer Get In Touch: Compact Info Items */
+.pro-footer .footer-widget .contact-item {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 6px !important;
+    color: var(--color-body) !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    word-break: break-word !important;
+}
+
+.pro-footer .footer-widget .contact-item i,
+.pro-footer .footer-widget .contact-item svg {
+    color: var(--color-primary) !important;
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 8px !important;
+    flex-shrink: 0 !important;
+}
+
+.pro-footer .footer-widget .contact-item a {
+    color: var(--color-body) !important;
+    transition: var(--transition) !important;
+    text-decoration: none !important;
+}
+
+.pro-footer .footer-widget .contact-item a:hover {
+    color: var(--color-primary) !important;
+}
+
+/* CV Widget Compact Height */
+.pro-footer .footer-widget p.footer-cv-desc {
+    font-size: 13px !important;
+    line-height: 19px !important;
+    margin-bottom: 10px !important;
+}
+
+.pro-footer .cv-download-btn {
+    height: 38px !important;
+    line-height: 38px !important;
+    padding: 0 20px !important;
+    font-size: 12px !important;
+}
+
+/* Footer Bottom Bar Compact */
+.pro-footer .footer-bottom {
+    padding-top: 12px !important;
+    margin-top: 14px !important;
+}
+.pro-footer .footer-bottom p {
+    font-size: 12.5px !important;
+}
+</style>
+<script>
+    if (window.feather) {
+        feather.replace();
+    }
+</script>

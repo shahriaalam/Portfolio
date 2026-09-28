@@ -9,23 +9,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt--25">
+                <div class="row mt--20">
                     <div class="col-lg-12">
-                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="education-tab" data-toggle="tab" href="#education"
-                                    role="tab" aria-controls="education" aria-selected="true">education</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="professional-tab" data-toggle="tab" href="#professional"
-                                    role="tab" aria-controls="professional" aria-selected="false">professional
-                                    Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab"
-                                    aria-controls="experience" aria-selected="false">experience</a>
-                            </li>
-                        </ul>
+                        <div class="resume-tabs-wrapper mb--25">
+                            <ul class="rn-nav-list nav nav-tabs resume-nav-tabs" id="myTabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="education-tab" data-toggle="tab" href="#education"
+                                        role="tab" aria-controls="education" aria-selected="true">
+                                        <i data-feather="book-open"></i>
+                                        <span>Education</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="professional-tab" data-toggle="tab" href="#professional"
+                                        role="tab" aria-controls="professional" aria-selected="false">
+                                        <i data-feather="cpu"></i>
+                                        <span>Professional Skills</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab"
+                                        aria-controls="experience" aria-selected="false">
+                                        <i data-feather="briefcase"></i>
+                                        <span>Experience</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         <!-- Start Tab Content Wrapper  -->
                         <div class="rn-nav-content tab-content" id="myTabContents">
                             <!-- Start Single Tab  -->
@@ -515,3 +525,116 @@
             </div>
         </div>
         <!-- End Resume Area -->
+
+<style>
+/* Sleek Compact Resume Navigation Tabs */
+.resume-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.rn-nav-list.resume-nav-tabs,
+.rn-nav-list {
+    max-width: 620px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: #181b20 !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    padding: 6px !important;
+    gap: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.rn-nav-list .nav-item {
+    flex: 1 1 0 !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+.rn-nav-list .nav-item .nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 10px 18px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    color: #94a3b8 !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    text-transform: capitalize !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.rn-nav-list .nav-item .nav-link:hover {
+    color: #f1f5f9 !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+}
+
+.rn-nav-list .nav-item .nav-link.active,
+.rn-nav-list.nav-tabs .nav-link.active {
+    background: #222631 !important;
+    color: #f43f5e !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(244, 63, 94, 0.35) !important;
+    box-shadow: 0 4px 14px rgba(244, 63, 94, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.rn-nav-list .nav-link svg,
+.rn-nav-list .nav-link i {
+    width: 15px !important;
+    height: 15px !important;
+    stroke-width: 2 !important;
+    color: inherit !important;
+    stroke: currentColor !important;
+    pointer-events: none !important;
+    transition: transform 0.25s ease !important;
+}
+
+.rn-nav-list .nav-item .nav-link:hover svg,
+.rn-nav-list .nav-item .nav-link:hover i {
+    transform: scale(1.1);
+}
+
+.rn-nav-list .nav-link span {
+    pointer-events: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .rn-nav-list.resume-nav-tabs,
+    .rn-nav-list {
+        max-width: 100% !important;
+        padding: 5px !important;
+        gap: 4px !important;
+    }
+    .rn-nav-list .nav-item .nav-link {
+        padding: 9px 8px !important;
+        font-size: 12px !important;
+        gap: 5px !important;
+    }
+    .rn-nav-list .nav-link svg,
+    .rn-nav-list .nav-link i {
+        width: 13px !important;
+        height: 13px !important;
+    }
+}
+</style>
+<script>
+    if (window.feather) {
+        feather.replace();
+    }
+</script>
