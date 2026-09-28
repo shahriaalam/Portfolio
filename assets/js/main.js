@@ -29,7 +29,52 @@
             imJs.awsActivation();
             imJs.demoActive();
             imJs.activePopupDemo();
-            
+            imJs.publicationsToggle();
+            imJs.initHeadline();
+        },
+
+        initHeadline: function () {
+            if (window.initCdHeadline) {
+                window.initCdHeadline();
+            }
+        },
+
+        publicationsToggle: function () {
+            $(document).on('click', '.pub-toggle-btn', function (e) {
+                e.preventDefault();
+                var $btn = $(this);
+                var targetId = $btn.data('target');
+                var $container = $(targetId);
+                var isExpanded = $btn.hasClass('expanded');
+
+                if (isExpanded) {
+                    $container.find('.pub-extra-card').addClass('pub-item-hidden').removeClass('pub-card-animate');
+                    $btn.removeClass('expanded');
+                    $btn.attr('aria-expanded', 'false');
+                    var count = $btn.data('count');
+                    var label = targetId === '#conf-pubs' ? 'Conferences' : 'Publications';
+                    $btn.find('.btn-text').text('Show More ' + label + ' (+' + count + ')');
+                    $btn.find('i').replaceWith('<i data-feather="chevron-down"></i>');
+                    if (window.feather) {
+                        feather.replace();
+                    }
+
+                    var pubSection = document.getElementById('publications');
+                    if (pubSection) {
+                        var pubTop = pubSection.getBoundingClientRect().top + window.pageYOffset - 90;
+                        window.scrollTo({ top: pubTop, behavior: 'smooth' });
+                    }
+                } else {
+                    $container.find('.pub-extra-card').removeClass('pub-item-hidden').addClass('pub-card-animate');
+                    $btn.addClass('expanded');
+                    $btn.attr('aria-expanded', 'true');
+                    $btn.find('.btn-text').text('Show Less');
+                    $btn.find('i').replaceWith('<i data-feather="chevron-up"></i>');
+                    if (window.feather) {
+                        feather.replace();
+                    }
+                }
+            });
         },
 
         
