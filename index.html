@@ -80,6 +80,11 @@
                 window.initCdHeadline();
             }
 
+            // Replace feather icons for all dynamically loaded sections
+            if (window.feather) {
+                feather.replace();
+            }
+
             // Dynamically load main.js after all section DOM elements are rendered
             const mainScript = document.createElement('script');
             mainScript.src = 'assets/js/main.js';
