@@ -55,7 +55,7 @@ Portfolio/
 ├── sections/                   # Modular HTML section components
 │   ├── header.html             # Top navigation bar and action buttons
 │   ├── mobile-menu.html        # Responsive side-drawer navigation
-│   ├── hero.html               # Hero banner with dynamic headline & social links
+│   ├── intro.html              # Intro/hero banner with dynamic headline & social links
 │   ├── features.html           # Service cards ("What I Do")
 │   ├── portfolio.html          # Project showcase gallery
 │   ├── resume.html             # Education, experience, and skill matrix
