@@ -18,17 +18,13 @@
             imJs.featherAtcivation();
             imJs.backToTopInit();
             imJs.mobileMenuActive();
-            imJs.vedioActivation();
             imJs.stickyHeader();
             imJs.smothScroll();
             imJs.smothScroll_Two();
             imJs.stickyAdjust();
-            imJs.testimonialActivation();
             imJs.contactForm();
             imJs.wowActive();
             imJs.awsActivation();
-            imJs.demoActive();
-            imJs.activePopupDemo();
             imJs.publicationsToggle();
             imJs.initHeadline();
         },
@@ -77,64 +73,56 @@
             });
         },
 
-        
-        activePopupDemo: function (e) {
-            $('.popuptab-area li a.demo-dark').on('click', function (e) {
-                $('.demo-modal-area').addClass('dark-version');
-                $('.demo-modal-area').removeClass('white-version');
-            });
 
-            $('.popuptab-area li a.demo-light').on('click', function (e) {
-                $('.demo-modal-area').removeClass('dark-version');
-                $('.demo-modal-area').addClass('white-version');
-            })
-        },
-
-        demoActive: function (e) {
-            $('.rn-right-demo').on('click', function (e) {
-                $('.demo-modal-area').addClass('open');
-            })
-            $('.demo-close-btn').on('click', function (e) {
-                $('.demo-modal-area').removeClass('open');
-            })
-        },
 
         contactForm: function () {
             $('.rwt-dynamic-form').on('submit', function (e) {
-				e.preventDefault();
-				var _self = $(this);
-				var __selector = _self.closest('input,textarea');
-				_self.closest('div').find('input,textarea').removeAttr('style');
-				_self.find('.error-msg').remove();
-				_self.closest('div').find('button[type="submit"]').attr('disabled', 'disabled');
-				var data = $(this).serialize();
-				$.ajax({
-					url: 'mail.php',
-					type: "post",
-					dataType: 'json',
-					data: data,
-					success: function (data) {
-						_self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-						if (data.code == false) {
-							_self.closest('div').find('[name="' + data.field + '"]');
-							_self.find('.rn-btn').after('<div class="error-msg"><p>*' + data.err + '</p></div>');
-						} else {
-							$('.error-msg').hide();
-							$('.form-group').removeClass('focused');
-							_self.find('.rn-btn').after('<div class="success-msg"><p>' + data.success + '</p></div>');
-							_self.closest('div').find('input,textarea').val('');
+                e.preventDefault();
+                var _self = $(this);
+                var $submitBtn = _self.find('button[type="submit"]');
+                var originalBtnHtml = $submitBtn.html();
+                _self.find('.error-msg, .success-msg').remove();
+                $submitBtn.attr('disabled', 'disabled').html('<span>Sending...</span> <i data-feather="loader"></i>');
+                if (window.feather) feather.replace();
 
-							setTimeout(function () {
-								$('.success-msg').fadeOut('slow');
-							}, 5000);
-						}
-					}
-				});
-			});
+                var payload = {
+                    name: _self.find('[name="contact-name"]').val(),
+                    email: _self.find('[name="contact-email"]').val(),
+                    phone: _self.find('[name="contact-phone"]').val() || 'N/A',
+                    subject: _self.find('[name="subject"]').val(),
+                    message: _self.find('[name="contact-message"]').val(),
+                    _subject: 'Portfolio Message: ' + (_self.find('[name="subject"]').val() || 'New Inquiry')
+                };
+
+                $.ajax({
+                    url: 'https://formsubmit.co/ajax/contactshahria@gmail.com',
+                    type: 'POST',
+                    dataType: 'json',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify(payload),
+                    success: function () {
+                        $submitBtn.removeAttr('disabled').html(originalBtnHtml);
+                        if (window.feather) feather.replace();
+                        _self.find('.form-bottom-row').after('<div class="success-msg mt--15" style="color: #10b981; font-weight: 500; text-align: center;"><p>✓ Message sent successfully! I will respond promptly.</p></div>');
+                        _self[0].reset();
+                        setTimeout(function () {
+                            _self.find('.success-msg').fadeOut('slow', function () { $(this).remove(); });
+                        }, 6000);
+                    },
+                    error: function () {
+                        $submitBtn.removeAttr('disabled').html(originalBtnHtml);
+                        if (window.feather) feather.replace();
+                        _self.find('.form-bottom-row').after('<div class="error-msg mt--15" style="color: #f43f5e; text-align: center;"><p>Unable to send right now. Please email directly at <a href="mailto:contactshahria@gmail.com" style="color: #fff; text-decoration: underline;">contactshahria@gmail.com</a></p></div>');
+                    }
+                });
+            });
         },
 
-        
-        
+
+
         wowActive: function () {
             new WOW().init();
         },
@@ -172,184 +160,6 @@
             });
         },
 
-        testimonialActivation: function () {
-            $('.testimonial-activation').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: true,
-                adaptiveHeight: true,
-                cssEase: 'linear',
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>'
-            });
-
-            $('.testimonial-item-one').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: true,
-                arrows: true,
-                adaptiveHeight: true,
-                cssEase: 'linear',
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
-                responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        arrows: false,
-                    }
-                }]
-            });
-
-
-            $('.portfolio-slick-activation').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-                cssEase: 'linear',
-                adaptiveHeight: true,
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>',
-                responsive: [{
-                        breakpoint: 1124,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 868,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: true,
-                            arrows: false,
-                        }
-                    }
-                ]
-            });
-
-
-            $('.blog-slick-activation').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-                cssEase: 'linear',
-                adaptiveHeight: true,
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>',
-                responsive: [{
-                        breakpoint: 1124,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 868,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            dots: true,
-                            arrows: false,
-                        }
-                    }
-                ]
-            });
-
-            $('.testimonial-activation-item-3').slick({
-                arrows: true,
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                adaptiveHeight: true,
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
-                responsive: [{
-                        breakpoint: 1124,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            arrows: false,
-                        }
-                    },
-                    {
-                        breakpoint: 577,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            arrows: false,
-                        }
-                    }
-                ]
-            });
-
-            $('.brand-activation-item-5').slick({
-                arrows: true,
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                adaptiveHeight: true,
-                prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
-                nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
-                responsive: [{
-                        breakpoint: 1124,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                        }
-                    },
-                    {
-                        breakpoint: 868,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-
-        },
-
         featherAtcivation: function () {
             feather.replace()
         },
@@ -369,7 +179,7 @@
                     $(scrollTop).css('opacity', '0');
                 }
             });
-            
+
             //Click event to scroll to top
             $(scrollTop).on('click', function () {
                 $('html, body').animate({
@@ -389,29 +199,6 @@
                     $('.header--sticky').removeClass('sticky')
                 }
             })
-        },
-
-        vedioActivation: function (e) {
-            $('#play-video').on('click', function (e) {
-                e.preventDefault();
-                $('#video-overlay').addClass('open');
-                $("#video-overlay").append('<iframe width="80%" height="80%" src="https://www.youtube.com/embed/7e90gBu4pas" frameborder="0" allowfullscreen></iframe>');
-            });
-
-            $('.video-overlay, .video-overlay-close').on('click', function (e) {
-                e.preventDefault();
-                close_video();
-            });
-
-            $(document).keyup(function (e) {
-                if (e.keyCode === 27) {
-                    close_video();
-                }
-            });
-
-            function close_video() {
-                $('.video-overlay.open').removeClass('open').find('iframe').remove();
-            };
         },
 
         mobileMenuActive: function (e) {

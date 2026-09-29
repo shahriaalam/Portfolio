@@ -4,13 +4,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>B. M. Shahria Alam</title>
-    <meta name="robots" content="noindex, follow">
-    <meta name="description" content="">
+    <title>B. M. Shahria Alam | AI Automation Engineer &amp; Full-Stack Developer</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Portfolio of B. M. Shahria Alam — Jr. AI Automation Engineer &amp; Full-Stack Developer specializing in n8n workflow orchestration, AI agents, enterprise automation, and web applications.">
+    <meta name="author" content="B. M. Shahria Alam">
+    <meta name="keywords" content="B. M. Shahria Alam, AI Automation Engineer, n8n, AI Developer, Full-Stack Developer, Agentic AI, Portfolio, Bangladesh">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#16181d">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <!-- CSS 
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="B. M. Shahria Alam | AI Automation Engineer &amp; Developer">
+    <meta property="og:description" content="Portfolio of B. M. Shahria Alam — Jr. AI Automation Engineer &amp; Full-Stack Developer specializing in n8n workflow orchestration, AI agents, and web applications.">
+    <meta property="og:image" content="assets/images/slider/banner-01.png">
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="B. M. Shahria Alam | AI Automation Engineer &amp; Developer">
+    <meta name="twitter:description" content="Portfolio of B. M. Shahria Alam — Jr. AI Automation Engineer &amp; Full-Stack Developer.">
+    <meta name="twitter:image" content="assets/images/slider/banner-01.png">
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS
     ============================================ -->
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/vendor/slick.css">
@@ -57,6 +79,11 @@
     <script>
         async function loadSections() {
             const placeholders = Array.from(document.querySelectorAll('[data-include]'));
+            if (placeholders.length === 0) {
+                initPageScripts();
+                return;
+            }
+
             await Promise.all(placeholders.map(async (el) => {
                 const url = el.getAttribute('data-include');
                 try {
@@ -67,29 +94,32 @@
                     el.remove();
                 } catch (err) {
                     console.error('Failed to load section:', url, err);
-                    if (window.location.protocol === 'file:') {
-                        el.innerHTML = `<div style="padding:15px; color:#ff4444; background:#222; text-align:center;">
-                            Note: Opening via file:// blocks HTML includes in modern browsers. Please view with a local server (e.g. VS Code Live Server) or on GitHub Pages.
-                        </div>`;
-                    }
                 }
             }));
 
-            // Initialize rotating text headline after sections are rendered in DOM
-            if (window.initCdHeadline) {
-                window.initCdHeadline();
-            }
+            initPageScripts();
+        }
 
-            // Replace feather icons for all dynamically loaded sections
+        function initPageScripts() {
             if (window.feather) {
                 feather.replace();
             }
-
-            // Dynamically load main.js after all section DOM elements are rendered
-            const mainScript = document.createElement('script');
-            mainScript.src = 'assets/js/main.js';
-            document.body.appendChild(mainScript);
+            if (window.initCdHeadline) {
+                window.initCdHeadline();
+            }
+            if (!document.getElementById('main-script')) {
+                const mainScript = document.createElement('script');
+                mainScript.id = 'main-script';
+                mainScript.src = 'assets/js/main.js';
+                mainScript.onload = function () {
+                    if (window.AOS) {
+                        AOS.refreshHard();
+                    }
+                };
+                document.body.appendChild(mainScript);
+            }
         }
+
         document.addEventListener('DOMContentLoaded', loadSections);
 
         // Ensure any external link or document clicked opens in a new tab
