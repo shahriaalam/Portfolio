@@ -86,6 +86,20 @@
             document.body.appendChild(mainScript);
         }
         document.addEventListener('DOMContentLoaded', loadSections);
+
+        // Ensure any external link or document clicked opens in a new tab
+        document.addEventListener('click', function (e) {
+            const link = e.target.closest('a');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href.startsWith('#') || href.startsWith('javascript:')) {
+                return;
+            }
+            if (href.startsWith('http://') || href.startsWith('https://') || href.endsWith('.pdf')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }, { passive: true });
     </script>
 </body>
 
